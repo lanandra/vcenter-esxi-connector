@@ -13,8 +13,11 @@ session.verify = False
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # Connect to a vCenter Server using username and password
-vsphere_client = create_vsphere_client(server="ip_address", username="your_username", password="your_password", session=session)
+f = open("output.txt", "w")
+vsphere_client = create_vsphere_client(server="172.16.104.250", username="administrator@vsphere.local", password="C0mpn3t#", session=session)
 
 # Get vCenter version
 vcenter_version = vsphere_client.appliance.system.Version.get()
 print(vcenter_version)
+f.write(str(vcenter_version))
+f.close
